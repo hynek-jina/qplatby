@@ -6,7 +6,7 @@
   "cleanUrls": true,
   "headers": [
     {
-      "source": "/(.*)\\.(css|js|svg|png|ico)",
+      "source": "/(.*)\\.(css|js|svg|png|ico|webmanifest)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
     }
   ]
