@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-i18n="meta.title">Q platby – otevřený software pro platby</title>
+  <meta name="description" data-i18n-content="meta.description" content="Q platby s.r.o. vyvíjí open-source aplikace, ve kterých se bankovní převod, hotovost a bitcoinový Lightning potkávají na jednom místě.">
+  <meta name="theme-color" content="#1677FF">
+  <link rel="icon" href="/assets/qplatby_app_icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <mask id="q-cut" maskUnits="userSpaceOnUse" x="-300" y="-300" width="800" height="800">
+      <rect x="-300" y="-300" width="800" height="800" fill="white"/>
+      <g transform="translate(126.2 180.2) rotate(-35)">
+        <rect x="-75" y="-140" width="150" height="280" rx="36" fill="black" stroke="black" stroke-width="30"/>
+      </g>
+    </mask>
+    <symbol id="q-mark" viewBox="-311 -276 650 650">
+      <path mask="url(#q-cut)" fill-rule="evenodd" fill="var(--brand)" d="M240 0A240 240 0 1 1 -240 0A240 240 0 1 1 240 0ZM172 0A172 172 0 1 0 -172 0A172 172 0 1 0 172 0Z"/>
+      <g class="q-card" transform="translate(126.2 180.2) rotate(-35)">
+        <path fill-rule="evenodd" fill="var(--brand)" d="M-39 -140H39A36 36 0 0 1 75 -104V104A36 36 0 0 1 39 140H-39A36 36 0 0 1 -75 104V-104A36 36 0 0 1 -39 -140Z M-38 -108H38A22 22 0 0 1 60 -86V86A22 22 0 0 1 38 108H-38A22 22 0 0 1 -60 86V-86A22 22 0 0 1 -38 -108Z"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Q platby">
+    <svg class="brand-mark" aria-hidden="true"><use href="#q-mark"/></svg>
+    <span class="brand-word">platby</span>
+  </a>
+  <div class="lang" role="group" aria-label="Jazyk / Language" data-i18n-aria="lang.group">
+    <button type="button" class="lang-btn" data-lang="cs" aria-pressed="true" lang="cs">Česky</button>
+    <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" lang="en">English</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-text">
+      <h1 data-i18n="hero.title">Stavíme otevřený software pro platby.</h1>
+      <p class="lede" data-i18n="hero.lede">Q platby je malá česká firma. Vyvíjíme aplikace, ve kterých se bankovní převod, hotovost a bitcoinový Lightning potkávají na jednom místě. Všechno zveřejňujeme jako open source.</p>
+    </div>
+    <div class="hero-mark" aria-hidden="true">
+      <svg class="hero-q" viewBox="-311 -276 650 650">
+        <path mask="url(#q-cut)" fill-rule="evenodd" fill="var(--brand)" d="M240 0A240 240 0 1 1 -240 0A240 240 0 1 1 240 0ZM172 0A172 172 0 1 0 -172 0A172 172 0 1 0 172 0Z"/>
+        <g class="q-card" transform="translate(126.2 180.2) rotate(-35)">
+          <path fill-rule="evenodd" fill="var(--brand)" d="M-39 -140H39A36 36 0 0 1 75 -104V104A36 36 0 0 1 39 140H-39A36 36 0 0 1 -75 104V-104A36 36 0 0 1 -39 -140Z M-38 -108H38A22 22 0 0 1 60 -86V86A22 22 0 0 1 38 108H-38A22 22 0 0 1 -60 86V-86A22 22 0 0 1 -38 -108Z"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="projects" id="projekty">
+    <h2 data-i18n="projects.title">Na čem pracujeme</h2>
+
+    <article class="project">
+      <div class="project-head">
+        <img class="project-icon" src="/assets/linky_icon.svg" alt="" width="64" height="64">
+        <h3 class="project-name">Linky</h3>
+      </div>
+      <div class="project-body">
+        <p class="project-tag" data-i18n="linky.tag">Kontakty, zprávy a platby</p>
+        <p data-i18n="linky.desc">Linky je webová aplikace pro telefon i počítač. Spravuje kontakty, posílá soukromé zprávy přes Nostr a platby přes Lightning a Cashu. Data zůstávají v zařízení a mezi zařízeními se synchronizují šifrovaně.</p>
+        <dl class="project-meta">
+          <div><dt data-i18n="meta.platforms">Platformy</dt><dd>Web, Android, CLI</dd></div>
+          <div><dt data-i18n="meta.license">Licence</dt><dd>0BSD</dd></div>
+          <div><dt data-i18n="meta.source">Zdrojový kód</dt><dd><a href="https://github.com/linky-fit/linky" rel="noopener">github.com/linky-fit/linky</a></dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <img class="project-icon" src="/assets/payky_icon.svg" alt="" width="64" height="64">
+        <h3 class="project-name">Payky</h3>
+      </div>
+      <div class="project-body">
+        <p class="project-tag" data-i18n="payky.tag">Pokladna pro malé obchodníky</p>
+        <p data-i18n="payky.desc">Payky je pokladní aplikace pro české a slovenské obchodníky. Přijímá platby QR kódem na bankovní účet, hotovost i bitcoin přes Lightning, bez platebního zprostředkovatele. Funguje i bez připojení a data zůstávají u obchodníka.</p>
+        <dl class="project-meta">
+          <div><dt data-i18n="meta.platforms">Platformy</dt><dd>Web, Android</dd></div>
+          <div><dt data-i18n="meta.license">Licence</dt><dd>MIT</dd></div>
+          <div><dt data-i18n="meta.source">Zdrojový kód</dt><dd><a href="https://github.com/finitoapp/payky" rel="noopener">github.com/finitoapp/payky</a></dd></div>
+        </dl>
+      </div>
+    </article>
+  </section>
+
+  <section class="principles">
+    <h2 data-i18n="principles.title">Jak pracujeme</h2>
+    <div class="principles-grid">
+      <div>
+        <h3 data-i18n="p1.title">Open source</h3>
+        <p data-i18n="p1.text">Zdrojové kódy všech našich projektů jsou veřejné pod svobodnými licencemi. Kdokoli si je může přečíst, upravit nebo provozovat sám.</p>
+      </div>
+      <div>
+        <h3 data-i18n="p2.title">Data u uživatele</h3>
+        <p data-i18n="p2.text">Aplikace fungují především lokálně, v zařízení uživatele. Bez našich serverů se obejdou.</p>
+      </div>
+      <div>
+        <h3 data-i18n="p3.title">Bez prostředníků</h3>
+        <p data-i18n="p3.text">Platba jde přímo od plátce k příjemci, ať už bankovním převodem, hotově nebo přes Lightning.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer" id="kontakt">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <svg class="brand-mark" aria-hidden="true"><use href="#q-mark"/></svg>
+      <span class="brand-word">platby</span>
+    </div>
+    <address class="footer-company">
+      <strong>Q platby s.r.o.</strong>
+      <span><span data-i18n="footer.ico">IČO</span> 300 86 621</span>
+      <span>Košťálov 282, 512 02 Košťálov</span>
+      <span data-i18n="footer.country">Česká republika</span>
+    </address>
+    <nav class="footer-links" aria-label="GitHub">
+      <a href="https://github.com/linky-fit/linky" rel="noopener">Linky na GitHubu</a>
+      <a href="https://github.com/finitoapp/payky" rel="noopener">Payky na GitHubu</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/app.js"></script>
+</body>
+</html>

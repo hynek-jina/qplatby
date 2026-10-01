@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="997" height="336" viewBox="-24 -24 499 168" fill="none">
+  <title>Q platby</title>
+  <defs>
+  <mask id="cutld" maskUnits="userSpaceOnUse" x="-300" y="-300" width="800" height="800">
+    <rect x="-300" y="-300" width="800" height="800" fill="white"/>
+    <g transform="translate(126.2 180.2) rotate(-35)">
+      <rect x="-75" y="-140" width="150" height="280" rx="36" fill="black" stroke="black" stroke-width="30"/>
+    </g>
+  </mask>
+  </defs>
+  <g transform="translate(49.8 49.8) scale(0.2076)">
+  <path mask="url(#cutld)" fill-rule="evenodd" fill="#1677FF" d="M240 0A240 240 0 1 1 -240 0A240 240 0 1 1 240 0ZM172 0A172 172 0 1 0 -172 0A172 172 0 1 0 172 0Z"/>
+  <g transform="translate(126.2 180.2) rotate(-35)">
+    <path fill-rule="evenodd" fill="#1677FF" d="M-39 -140H39A36 36 0 0 1 75 -104V104A36 36 0 0 1 39 140H-39A36 36 0 0 1 -75 104V-104A36 36 0 0 1 -39 -140Z M-38 -108H38A22 22 0 0 1 60 -86V86A22 22 0 0 1 38 108H-38A22 22 0 0 1 -60 86V-86A22 22 0 0 1 -38 -108Z"/>
+  </g>
+  </g>
+  <text x="133" y="106" font-family="Inter, SF Pro Display, -apple-system, Helvetica Neue, Arial, sans-serif" font-size="104" font-weight="600" letter-spacing="-3" fill="white">platby</text>
+</svg>
