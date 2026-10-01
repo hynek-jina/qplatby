@@ -24,3 +24,10 @@ Server běží na http://localhost:3000, port lze změnit proměnnou `PORT`.
 Výchozí jazyk je čeština. Angličtinu zapne přepínač v hlavičce nebo parametr `?lang=en`.
 Volba se ukládá do `localStorage`. Překlady jsou v objektu `translations` v `public/app.js`;
 každý přeložený prvek má atribut `data-i18n="klíč"`.
+
+## Nasazení na Vercel
+
+Web se na Vercelu nasazuje jako statický – `vercel.json` říká, že se má servírovat složka `public/`
+bez buildu. Soubor `server.ts` slouží jen pro lokální vývoj, Vercel ho nespouští.
+Pokud byl projekt na Vercelu založen dříve, zkontrolujte v Settings → General, že
+*Framework Preset* je „Other“ a *Root Directory* je prázdné, pak proveďte nový deploy.
