@@ -5,9 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title data-i18n="meta.title">Q platby – otevřený software pro platby</title>
   <meta name="description" data-i18n-content="meta.description" content="Q platby s.r.o. vyvíjí open-source aplikace, ve kterých se bankovní převod, hotovost a bitcoinový Lightning potkávají na jednom místě.">
-  <meta name="theme-color" content="#1677FF">
+  <meta name="theme-color" content="#FFFFFF">
+  <script>
+    // Mirrors the color mode logic in app.js, so the first frame paints in the stored mode.
+    try {
+      var stored = localStorage.getItem("qplatby.color_mode");
+      var mode = stored === "light" || stored === "dark" ? stored
+        : matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      if (stored === "light" || stored === "dark") document.documentElement.dataset.theme = stored;
+      document.documentElement.style.colorScheme = mode;
+      document.querySelector('meta[name="theme-color"]').setAttribute("content", mode === "dark" ? "#0B1E3F" : "#FFFFFF");
+    } catch (e) {}
+  </script>
   <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
-  <link rel="icon" href="/assets/qplatby_app_icon.svg" type="image/svg+xml">
+  <link rel="icon" href="/assets/qplatby_icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +42,11 @@
         <path fill-rule="evenodd" fill="var(--brand)" d="M-39 -140H39A36 36 0 0 1 75 -104V104A36 36 0 0 1 39 140H-39A36 36 0 0 1 -75 104V-104A36 36 0 0 1 -39 -140Z M-38 -108H38A22 22 0 0 1 60 -86V86A22 22 0 0 1 38 108H-38A22 22 0 0 1 -60 86V-86A22 22 0 0 1 -38 -108Z"/>
       </g>
     </symbol>
+    <!-- Lucide icons, the set linky.fit uses -->
+    <symbol id="i-languages" viewBox="0 0 24 24"><path d="m5 8 6 6"/><path d="m4 14 6-6 2-3"/><path d="M2 5h12"/><path d="M7 2h1"/><path d="m22 22-5-10-5 10"/><path d="M14 18h6"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></symbol>
   </defs>
 </svg>
 
@@ -39,11 +55,25 @@
     <svg class="brand-mark" aria-hidden="true"><use href="#q-mark"/></svg>
     <span class="brand-word">platby</span>
   </a>
-  <div class="lang" role="group" aria-label="Jazyk / Language" data-i18n-aria="lang.group">
-    <button type="button" class="lang-btn" data-lang="cs" aria-pressed="true" lang="cs">Česky</button>
-    <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" lang="en">English</button>
+  <div class="header-actions">
+    <button type="button" class="icon-btn" id="lang-toggle" aria-haspopup="dialog" aria-controls="lang-sheet" aria-label="Jazyk" title="Jazyk">
+      <svg class="icon" aria-hidden="true"><use href="#i-languages"/></svg>
+    </button>
+    <button type="button" class="icon-btn" id="theme-toggle" aria-label="Vzhled: Automaticky" title="Vzhled: Automaticky">
+      <svg class="icon" data-mode="auto" aria-hidden="true"><use href="#i-monitor"/></svg>
+      <svg class="icon" data-mode="light" aria-hidden="true" hidden><use href="#i-sun"/></svg>
+      <svg class="icon" data-mode="dark" aria-hidden="true" hidden><use href="#i-moon"/></svg>
+    </button>
   </div>
 </header>
+
+<dialog class="sheet" id="lang-sheet" aria-labelledby="lang-sheet-title">
+  <p class="sheet-title" id="lang-sheet-title" data-i18n="lang.title">Jazyk</p>
+  <div class="sheet-list" role="listbox" aria-labelledby="lang-sheet-title">
+    <button type="button" class="sheet-row" role="option" data-lang="cs" lang="cs" aria-selected="true">Čeština</button>
+    <button type="button" class="sheet-row" role="option" data-lang="en" lang="en" aria-selected="false">English</button>
+  </div>
+</dialog>
 
 <main>
   <section class="hero">
@@ -67,12 +97,13 @@
     <article class="project">
       <div class="project-head">
         <img class="project-icon" src="/assets/linky_icon.svg" alt="" width="64" height="64">
-        <h3 class="project-name">Linky</h3>
+        <h3 class="project-name"><a href="https://linky.fit" rel="noopener">Linky</a></h3>
       </div>
       <div class="project-body">
         <p class="project-tag" data-i18n="linky.tag">Kontakty, zprávy a platby</p>
         <p data-i18n="linky.desc">Linky je webová aplikace pro telefon i počítač. Spravuje kontakty, posílá soukromé zprávy přes Nostr a platby přes Lightning a Cashu. Data zůstávají v zařízení a mezi zařízeními se synchronizují šifrovaně.</p>
         <dl class="project-meta">
+          <div><dt data-i18n="meta.web">Web</dt><dd><a href="https://linky.fit" rel="noopener">linky.fit</a></dd></div>
           <div><dt data-i18n="meta.platforms">Platformy</dt><dd>Web, Android, CLI</dd></div>
           <div><dt data-i18n="meta.license">Licence</dt><dd>0BSD</dd></div>
           <div><dt data-i18n="meta.source">Zdrojový kód</dt><dd><a href="https://github.com/linky-fit/linky" rel="noopener">github.com/linky-fit/linky</a></dd></div>
@@ -82,13 +113,31 @@
 
     <article class="project">
       <div class="project-head">
+        <img class="project-icon" src="/assets/fazole_icon.png" alt="" width="64" height="64">
+        <h3 class="project-name"><a href="https://fazole.fit" rel="noopener">Fazole</a></h3>
+      </div>
+      <div class="project-body">
+        <p class="project-tag" data-i18n="fazole.tag">Platební terminál v telefonu</p>
+        <p data-i18n="fazole.desc">Fazole je platební terminál pro české obchodníky. Zákazník naskenuje QR kód a zaplatí převodem rovnou na účet obchodníka, nebo bitcoinem přes Lightning či Cashu. Bez smlouvy, bez registrace a bez terminálu, stačí telefon. Tržby i historie zůstávají u obchodníka.</p>
+        <dl class="project-meta">
+          <div><dt data-i18n="meta.web">Web</dt><dd><a href="https://fazole.fit" rel="noopener">fazole.fit</a></dd></div>
+          <div><dt data-i18n="meta.platforms">Platformy</dt><dd>Web</dd></div>
+          <div><dt data-i18n="meta.license">Licence</dt><dd>0BSD</dd></div>
+          <div><dt data-i18n="meta.source">Zdrojový kód</dt><dd><a href="https://github.com/linky-fit/linky#fazole" rel="noopener">github.com/linky-fit/linky</a></dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
         <img class="project-icon" src="/assets/payky_icon.svg" alt="" width="64" height="64">
-        <h3 class="project-name">Payky</h3>
+        <h3 class="project-name"><a href="https://payky.me" rel="noopener">Payky</a></h3>
       </div>
       <div class="project-body">
         <p class="project-tag" data-i18n="payky.tag">Pokladna pro malé obchodníky</p>
         <p data-i18n="payky.desc">Payky je pokladní aplikace pro české a slovenské obchodníky. Přijímá platby QR kódem na bankovní účet, hotovost i bitcoin přes Lightning, bez platebního zprostředkovatele. Funguje i bez připojení a data zůstávají u obchodníka.</p>
         <dl class="project-meta">
+          <div><dt data-i18n="meta.web">Web</dt><dd><a href="https://payky.me" rel="noopener">payky.me</a></dd></div>
           <div><dt data-i18n="meta.platforms">Platformy</dt><dd>Web, Android, CLI</dd></div>
           <div><dt data-i18n="meta.license">Licence</dt><dd>MIT</dd></div>
           <div><dt data-i18n="meta.source">Zdrojový kód</dt><dd><a href="https://github.com/finitoapp/payky" rel="noopener">github.com/finitoapp/payky</a></dd></div>
@@ -129,8 +178,9 @@
       <span data-i18n="footer.country">Česká republika</span>
     </address>
     <nav class="footer-links" aria-label="GitHub">
-      <a href="https://github.com/linky-fit/linky" rel="noopener">Linky na GitHubu</a>
-      <a href="https://github.com/finitoapp/payky" rel="noopener">Payky na GitHubu</a>
+      <a href="https://github.com/linky-fit/linky" rel="noopener" data-i18n="footer.linky">Linky na GitHubu</a>
+      <a href="https://github.com/linky-fit/linky#fazole" rel="noopener" data-i18n="footer.fazole">Fazole na GitHubu</a>
+      <a href="https://github.com/finitoapp/payky" rel="noopener" data-i18n="footer.payky">Payky na GitHubu</a>
     </nav>
   </div>
 </footer>
